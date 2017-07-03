@@ -20,5 +20,32 @@ public class tuna extends JFrame{
     i3 = new JTextField("uneditable",20);
     i3.setEditable(false);
     add(i3);
+    pass = new JPasswordField("mypass");
+    add(pass);
+    thehandler handler = new thehandler();
+    i1.addActionListener(handler);
+    i2.addActionListener(handler);
+    i3.addActionListener(handler);
+    pass.addActionListener(handler);
+
+  }
+  private class thehandler implements ActionListener{
+    public void actionPerformed(ActionEvent event){
+      String string = "";
+
+      if (event.getSource() == i1){
+        string = String.format("field 1: %s",event.getActionCommand());
+      }
+      else if (event.getSource() == i2){
+        string = String.format("field 2: %s",event.getActionCommand());
+      }
+      else if (event.getSource() == i3){
+        string = String.format("field 3: %s",event.getActionCommand());
+      }
+      else if (event.getSource() == pass){
+        string = String.format("password field is : %s",event.getActionCommand());
+      }
+      JOptionPane.showMessageDialog(null, string);
+    }
   }
 }
